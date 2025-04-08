@@ -1,0 +1,28 @@
+<%= simple_form_for(@restaurante) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :name, label: 'Nome', placeholder: 'Digite o nome do restaurante' %>
+        <%= f.input :description, label: 'Descrição', placeholder: 'Digite a descrição do restaurante' %>
+        <%= f.input :delivery_tax, label: 'Taxa de entrega', placeholder: 'Digite a taxa de entrega' %>
+        <%= f.association :category, label: 'Categoria', prompt: 'Selecione uma categoria' %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.input :city, label: 'Cidade', placeholder: 'Digite a cidade' %>
+        <%= f.input :street, label: 'Rua', placeholder: 'Digite a rua' %>
+        <%= f.input :neighborhood, label: 'Bairro', placeholder: 'Digite o bairro' %>
+        <%= f.input :number, label: 'Número', placeholder: 'Digite o número' %>
+        <%= f.input :complement, label: 'Complemento', placeholder: 'Digite o complemento' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions text-center mt-3">
+    <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', restaurantes_path, class: 'btn btn-secondary' %>
+  </div>
+<% end %>
