@@ -1,0 +1,2 @@
+module AvailableCitiesHelper
+end

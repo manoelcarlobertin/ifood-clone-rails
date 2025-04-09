@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
-  resources :customers
-  get "carrinho/index"
-  get "carrinho/add_item"
-  get "carrinho/remove_item"
-  get "carrinho/clear"
-  resources :pratos
-  resources :order_products
-  resources :orders, only: [ :new, :create, :show, :index ]
-  resources :products
-  resources :product_categories
-  resources :restaurantes, only: [ :index, :show ]
-  resources :categories
+  root "restaurantes#index"
+
   devise_for :users
-  # Defines the root path route ("/")
-  # root "home#index"
+
+  resources :restaurantes, only: [ :index, :show,  :new, :create ]
+  resources :categories, only: [ :index ]
+  resources :products, only: [ :index, :show ]
+  resources :orders, only: [ :new, :create, :show, :index ]
+
+  resources :carrinho, only: [ :index ] do
+    collection do
+      get :add_item
+      get :remove_item
+      get :clear
+    end
+  end
+
+  resources :available_cities, only: [ :index ]
 end
