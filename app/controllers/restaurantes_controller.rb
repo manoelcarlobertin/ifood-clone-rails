@@ -3,7 +3,9 @@ class RestaurantesController < ApplicationController
 
   # GET /restaurantes or /restaurantes.json
   def index
-    @restaurantes = Restaurante.all.order(created_at: :desc)
+    # @restaurantes = Restaurante.all.order(created_at: :desc)
+    # Exibe 3 restaurantes por página. Você pode ajustar a quantidade conforme necessário.
+    @restaurantes = Restaurante.page(params[:page]).per(3)
   end
 
   # GET /restaurantes/1 or /restaurantes/1.json
