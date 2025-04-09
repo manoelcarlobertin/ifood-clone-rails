@@ -7,8 +7,11 @@ class RestaurantesController < ApplicationController
     @restaurantes = Restaurante.page(params[:page]).per(3)
   end
 
-  # GET /restaurantes/1 or /restaurantes/1.json
+  # Estamos exibindo os * detalhes * de um restaurante específico, incluindo uma listagem dos pratos disponíveis.
   def show
+    @restaurante = Restaurante.find(params[:id])
+    # Supondo que o restaurante tenha muitos pratos (pratos), algo como:
+    @pratos = @restaurante.pratos  # Certifique-se de ter definido o relacionamento
   end
 
   # GET /restaurantes/new
@@ -17,8 +20,7 @@ class RestaurantesController < ApplicationController
   end
 
   # GET /restaurantes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /restaurantes or /restaurantes.json
   def create
