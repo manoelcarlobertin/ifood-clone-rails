@@ -1,8 +1,26 @@
 class RestaurantesController < ApplicationController
   before_action :set_restaurante, only: %i[ show edit update destroy ]
 
-  # GET /restaurantes or /restaurantes.json
+  # Estamos permitindo que o usuário filtre restaurantes por cidade, categoria e/ou por uma palavra-chave,
+  # antes de aplicar a paginação.
   def index
+    @restaurantes = Restaurante.all
+
+    # Filtro por endereço (exemplo: por cidade)
+    if params[:city].present?
+      @restaurantes = @restaurantes.where(city: params[:city])
+    end
+
+    # Filtro por categoria
+    if params[:category].present?
+      @restaurantes = @restaurantes.joins(:category).where(categories: { title: params[:category] })
+    end
+
+    # Pesquisa por texto (nome ou descrição)
+    if params[:query].present?
+      query = "%#{params[:query]}%"
+      @restaurantes = @restaurantes.where("name ILIKE ? OR description ILIKE ?", query, query)
+    end
     # Exibe 3 restaurantes por página. Você pode ajustar a quantidade conforme necessário.
     @restaurantes = Restaurante.page(params[:page]).per(3)
   end
