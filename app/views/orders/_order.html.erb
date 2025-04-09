@@ -1,47 +1,49 @@
-<div id="<%= dom_id order %>">
-  <p>
-    <strong>Name:</strong>
-    <%= order.name %>
-  </p>
+<div id="<%= dom_id order %>" class="bg-white shadow rounded-lg p-6 mb-4">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="col-span-2 md:col-span-1">
+      <div class="mb-4">
+        <h3 class="text-gray-600 text-sm font-semibold">Nome</h3>
+        <p class="text-gray-900"><%= order.name %></p>
+      </div>
 
-  <p>
-    <strong>Mobile phone:</strong>
-    <%= order.mobile_phone %>
-  </p>
+      <div class="mb-4">
+        <h3 class="text-gray-600 text-sm font-semibold">Telefone</h3>
+        <p class="text-gray-900"><%= order.mobile_phone %></p>
+      </div>
 
-  <p>
-    <strong>Total value:</strong>
-    <%= order.total_value %>
-  </p>
+      <div class="mb-4">
+        <h3 class="text-gray-600 text-sm font-semibold">Valor Total</h3>
+        <p class="text-gray-900 font-bold text-lg"><%= number_to_currency(order.total_value) %></p>
+      </div>
+    </div>
 
-  <p>
-    <strong>City:</strong>
-    <%= order.city %>
-  </p>
+    <div class="col-span-2 md:col-span-1">
+      <div class="mb-4">
+        <h3 class="text-gray-600 text-sm font-semibold">Endereço</h3>
+        <p class="text-gray-900">
+          <%= order.neighborhood %>, <%= order.city %><br>
+          Nº <%= order.number %>
+          <%= ", #{order.complement}" if order.complement.present? %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Neighborhood:</strong>
-    <%= order.neighborhood %>
-  </p>
+      <div class="mb-4">
+        <h3 class="text-gray-600 text-sm font-semibold">Status</h3>
+        <span class="px-3 py-1 rounded-full text-sm font-semibold
+          <%= case order.status
+              when 'pending' then 'bg-yellow-100 text-yellow-800'
+              when 'processing' then 'bg-blue-100 text-blue-800'
+              when 'completed' then 'bg-green-100 text-green-800'
+              when 'cancelled' then 'bg-red-100 text-red-800'
+              end %>">
+          <%= order.status.titleize %>
+        </span>
+      </div>
 
-  <p>
-    <strong>Number:</strong>
-    <%= order.number %>
-  </p>
-
-  <p>
-    <strong>Complement:</strong>
-    <%= order.complement %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= order.status %>
-  </p>
-
-  <p>
-    <strong>Restaurante:</strong>
-    <%= order.restaurante_id %>
-  </p>
-
+      <div class="mb-4">
+        <h3 class="text-gray-600 text-sm font-semibold">Restaurante</h3>
+        <p class="text-gray-900"><%= order.restaurante.name rescue order.restaurante_id %></p>
+      </div>
+    </div>
+  </div>
 </div>

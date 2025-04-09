@@ -1,16 +1,33 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Products" %>
-
-<h1>Products</h1>
-
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
+<!-- Products Index Page -->
+<div class="container mt-4">
+  <% if notice.present? %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   <% end %>
-</div>
 
-<%= link_to "New product", new_product_path %>
+  <% content_for :title, "Products" %>
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="display-4">Products</h1>
+    <%= link_to new_product_path, class: "btn btn-primary" do %>
+      <i class="fas fa-plus"></i> New Product
+    <% end %>
+  </div>
+
+  <div id="products" class="row row-cols-1 row-cols-md-3 g-4">
+    <% @products.each do |product| %>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <%= render product %>
+            <div class="d-grid gap-2 mt-3">
+              <%= link_to "Show details", product, class: "btn btn-outline-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

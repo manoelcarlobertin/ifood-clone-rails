@@ -1,2 +1,38 @@
-<h1>AvailableCities#index</h1>
-<p>Find me in app/views/available_cities/index.html.erb</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1>Cidades Disponíveis</h1>
+      <div class="table-responsive mt-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Estado</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @available_cities.each do |city| %>
+              <tr>
+                <td><%= city.name %></td>
+                <td><%= city.state %></td>
+                <td><%= city.active ? 'Ativo' : 'Inativo' %></td>
+                <td>
+                  <%= link_to 'Ver', available_city_path(city), class: 'btn btn-sm btn-info' %>
+                  <%= link_to 'Editar', edit_available_city_path(city), class: 'btn btn-sm btn-warning' %>
+                  <%= link_to 'Excluir', available_city_path(city),
+                      method: :delete,
+                      data: { confirm: 'Tem certeza?' },
+                      class: 'btn btn-sm btn-danger' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <%= link_to 'Nova Cidade', new_available_city_path, class: 'btn btn-primary mt-3' %>
+    </div>
+  </div>
+</div>

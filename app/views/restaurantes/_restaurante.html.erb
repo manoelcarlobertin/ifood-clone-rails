@@ -1,47 +1,50 @@
-<div id="<%= dom_id restaurante %>">
-  <p>
-    <strong>Name:</strong>
-    <%= restaurante.name %>
-  </p>
+<div id="<%= dom_id restaurante %>" class="bg-white rounded-lg shadow-md p-6 mb-4">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="col-span-2">
+      <h2 class="text-2xl font-bold mb-2"><%= restaurante.name %></h2>
+      <p class="text-gray-600 mb-4"><%= restaurante.description %></p>
+    </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= restaurante.description %>
-  </p>
+    <div class="border-t pt-4">
+      <h3 class="text-lg font-semibold mb-3">Informações do Restaurante</h3>
+      <div class="space-y-2">
+        <p class="flex items-center">
+          <span class="text-gray-600 font-medium w-32">Taxa de Entrega:</span>
+          <span class="text-green-600">R$ <%= number_with_precision(restaurante.delivery_tax, precision: 2) %></span>
+        </p>
 
-  <p>
-    <strong>Delivery tax:</strong>
-    <%= restaurante.delivery_tax %>
-  </p>
+        <p class="flex items-center">
+          <span class="text-gray-600 font-medium w-32">Categoria:</span>
+          <span><%= restaurante.category.name rescue restaurante.category_id %></span>
+        </p>
+      </div>
+    </div>
 
-  <p>
-    <strong>City:</strong>
-    <%= restaurante.city %>
-  </p>
+    <div class="border-t pt-4">
+      <h3 class="text-lg font-semibold mb-3">Endereço</h3>
+      <div class="space-y-2">
+        <p class="flex items-center">
+          <span class="text-gray-600 font-medium w-24">Cidade:</span>
+          <span><%= restaurante.city %></span>
+        </p>
 
-  <p>
-    <strong>Street:</strong>
-    <%= restaurante.street %>
-  </p>
+        <p class="flex items-center">
+          <span class="text-gray-600 font-medium w-24">Bairro:</span>
+          <span><%= restaurante.neighborhood %></span>
+        </p>
 
-  <p>
-    <strong>Neighborhood:</strong>
-    <%= restaurante.neighborhood %>
-  </p>
+        <p class="flex items-center">
+          <span class="text-gray-600 font-medium w-24">Rua:</span>
+          <span><%= restaurante.street %>, <%= restaurante.number %></span>
+        </p>
 
-  <p>
-    <strong>Number:</strong>
-    <%= restaurante.number %>
-  </p>
-
-  <p>
-    <strong>Complement:</strong>
-    <%= restaurante.complement %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= restaurante.category_id %>
-  </p>
-
+        <% if restaurante.complement.present? %>
+          <p class="flex items-center">
+            <span class="text-gray-600 font-medium w-24">Complemento:</span>
+            <span><%= restaurante.complement %></span>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
