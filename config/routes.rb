@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "carrinho/clear"
   resources :pratos
   resources :order_products
-  resources :orders
+  resources :orders, only: [ :new, :create, :show, :index ]
   resources :products
   resources :product_categories
   resources :restaurantes, only: [ :index, :show ]

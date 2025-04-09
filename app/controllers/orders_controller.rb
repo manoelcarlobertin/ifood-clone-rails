@@ -6,11 +6,13 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  # GET /orders/1 or /orders/1.json
+  # Esses passos permitem que o usuário revise o pedido feito no carrinho e o envie, transformando-o em um pedido real.
+
+  # show: 1º Exibe o status do pedido (ex.: "Em preparação", "Enviado", etc.).
   def show
   end
 
-  # GET /orders/new
+  # new: 2º Mostra o resumo do pedido para confirmação.
   def new
     @order = Order.new
   end
@@ -19,7 +21,7 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  # POST /orders or /orders.json
+  # create: 3º Cria o pedido no banco de dados.
   def create
     @order = Order.new(order_params)
 
