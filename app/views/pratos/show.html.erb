@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @prato %>
+
+<div>
+  <%= link_to "Edit this prato", edit_prato_path(@prato) %> |
+  <%= link_to "Back to pratos", pratos_path %>
+
+  <%= button_to "Destroy this prato", @prato, method: :delete %>
+</div>

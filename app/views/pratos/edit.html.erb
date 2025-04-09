@@ -1,0 +1,12 @@
+<% content_for :title, "Editing prato" %>
+
+<h1>Editing prato</h1>
+
+<%= render "form", prato: @prato %>
+
+<br>
+
+<div>
+  <%= link_to "Show this prato", @prato %> |
+  <%= link_to "Back to pratos", pratos_path %>
+</div>

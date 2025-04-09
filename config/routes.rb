@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pratos
   resources :order_products
   resources :orders
   resources :products
