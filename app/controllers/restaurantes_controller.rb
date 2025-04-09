@@ -1,6 +1,13 @@
 class RestaurantesController < ApplicationController
   before_action :set_restaurante, only: %i[ show edit update destroy ]
 
+  # def index
+  #   @restaurants = Restaurant.all
+  #   filter_by_query if params[:q]
+  #   filter_by_city if params[:city]
+  #   filter_by_category if params[:category]
+  # end
+
   # Estamos permitindo que o usuário filtre restaurantes por cidade, categoria e/ou por uma palavra-chave,
   # antes de aplicar a paginação.
   def index
@@ -79,13 +86,27 @@ class RestaurantesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_restaurante
-      @restaurante = Restaurante.find(params.expect(:id))
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_restaurante
+    @restaurante = Restaurante.find(params.expect(:id))
+  end
 
-    # Only allow a list of trusted parameters through.
-    def restaurante_params
-      params.expect(restaurante: [ :name, :description, :delivery_tax, :city, :street, :neighborhood, :number, :complement, :category_id ])
-    end
+  # Only allow a list of trusted parameters through.
+  def restaurante_params
+    params.expect(restaurante: [ :name, :description, :delivery_tax, :city, :street, :neighborhood, :number, :complement, :category_id ])
+  end
+
+  # def filter_by_query
+  #   @restaurant = @restaurants.ransack(name_or_description_cont: params[:q]).result
+  # end
+
+  # def filter_by_city
+  #   @restaurant = @restaurants.where(city: params[:city])
+  # end
+
+  # def filter_by_category
+  #   @restaurant = @restaurants.select do |r|
+  #     r.category.title == params[:category]
+  #   end
+  # end
 end

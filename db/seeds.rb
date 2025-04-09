@@ -1,15 +1,15 @@
 # db/seeds.rb
 require 'faker'
 
-# Limpar as tabelas (cuidado em ambientes de produção)
-# puts "Limpando dados antigos..."
-# OrderProduct.destroy_all
-# Order.destroy_all
-# Product.destroy_all
-# ProductCategory.destroy_all
-# Restaurante.destroy_all
-# Category.destroy_all
-# User.destroy_all
+Limpar as tabelas (cuidado em ambientes de produção)
+puts "Limpando dados antigos..."
+OrderProduct.destroy_all
+Order.destroy_all
+Product.destroy_all
+ProductCategory.destroy_all
+Restaurante.destroy_all
+Category.destroy_all
+User.destroy_all
 
 puts "Criando categorias de culinária..."
 # Cria algumas categorias/cuisines para os restaurantes
