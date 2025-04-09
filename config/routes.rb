@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   get "carrinho/index"
   get "carrinho/add_item"
   get "carrinho/remove_item"

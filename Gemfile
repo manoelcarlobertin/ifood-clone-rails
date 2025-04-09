@@ -70,3 +70,5 @@ gem "geocoder"
 gem "kaminari"
 gem "sassc-rails"
 gem "cssbundling-rails", "~> 1.4"
+# fazer pesquisa de forma mais fácil
+gem "ransack"
