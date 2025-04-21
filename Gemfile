@@ -61,7 +61,7 @@ end
 
 gem "devise", "~> 4.9"
 gem "pundit"
-gem "bootstrap", "~> 5.2"
+gem "bootstrap", "~> 5.3"
 gem "image_processing"
 gem "aws-sdk-s3"
 gem "stripe"
